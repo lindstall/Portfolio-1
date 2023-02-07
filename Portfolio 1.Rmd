@@ -1,0 +1,41 @@
+---
+title: 'Portfolio #1'
+output: html_document
+date: "2023-02-02"
+---
+
+
+```{r }
+library(tidyverse)
+```
+```{r setup, include=FALSE} 
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+```
+
+
+```{r message=FALSE}
+library(readxl)
+PIRUS_Public_May2020 <- read_excel("PIRUS_Public_May2020.xlsx") 
+Warning = FALSE 
+dateWarning = FALSE
+```
+
+```{r}
+PIRUS_Public_May2020 %>% 
+filter(Loc_Plot_State1 != "-99") %>% 
+filter(Loc_Plot_City1 != "-99") %>% 
+count(Loc_Plot_State1) %>%
+  arrange(desc(n))
+```
+
+California, New York, Texas, Florida, Illinois, Washington, Minnesota, Ohio, and Tennessee are the states with the most terrorist attacks (until May 2020)
+
+```{r}
+PIRUS_Public_May2020 %>% 
+filter(Loc_Plot_City1 != "-99") %>% 
+count(Loc_Plot_City1) %>%
+  arrange(desc(n))
+```
+New York City, Chicago, Minneapolis, Washington, Seattle, Los Angeles, Portland, San Franciso, Detroit, and Miami are the cities with the most terrorist attacks (until May 2020)
+
+
